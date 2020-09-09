@@ -6,3 +6,7 @@
   
 - Урок 2. Парсинг HTML. BeautifulSoup, MongoDB
   - [X] [Практическое задание](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%202/DZ2-4.ipynb)
+  
+- Урок 3. Урок 3. Системы управления базами данных MongoDB и SQLite в Python
+
+- Урок 4. Парсинг HTML. XPath
