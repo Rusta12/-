@@ -14,3 +14,5 @@
  
 - Урок 4. Парсинг HTML. XPath
   - [X] [Практическое задание](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%204/hw4.py)
+  
+- Урок 7. Selenium в Python
