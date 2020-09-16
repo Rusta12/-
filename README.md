@@ -16,4 +16,7 @@
   - [X] [Практическое задание](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%204/hw4.py)
   
 - Урок 5. Selenium в Python
-  - [ ] Идет работа. 
+  - [ ] Идут работы. 
+  
+ - Урок 6. Scrapy
+   - [ ] Идут работы. 
