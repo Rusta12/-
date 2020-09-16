@@ -1,3 +1,12 @@
+"""
+Урок 4. Парсинг HTML. XPath
+Cобираем новости с сайтов news.mail.ru, lenta.ru, yandex-новости. Для парсинга использовать XPath.
+- название источника;
+- наименование новости;
+- ссылку на новость;
+- дата публикации.
+"""
+
 from lxml import html
 from pprint import pprint
 import requests
