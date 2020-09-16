@@ -13,3 +13,4 @@
   - [X] [Практическое задание](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/hw3/Lesson%203/lesson4.py)
  
 - Урок 4. Парсинг HTML. XPath
+  - [X] [Практическое задание](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%204/hw4.py)
