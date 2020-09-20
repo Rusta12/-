@@ -16,7 +16,11 @@
   - [X] [Практическое задание](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%204/hw4.py)
   
 - Урок 5. Selenium в Python
-  - [ ] Идут работы. 
+  - [X] [Парсинг сообщений mail.ru](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%205/Hw5_mail.py)
+  - [X] [Парсинг товаров по акции mvideo](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%205/hw5_mvideo.py)
   
- - Урок 6. Scrapy
-   - [ ] Идут работы. 
+ - Урок 6. Scrapy 
+   - [ ] Идут работы.
+   
+ - Урок 7. Scrapy Парсинг фото и файлов
+   - [ ] Идут работы.
