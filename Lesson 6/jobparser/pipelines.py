@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
@@ -7,17 +5,16 @@
 from pymongo import MongoClient
 
 
-class JobparserPipeline:                            # Класс для обработки item'a
-    def __init__(self):                             # Конструктор, где инициализируем подключение к СУБД
+class JobparserPipeline:                            
+    def __init__(self):                             
         client = MongoClient('localhost', 27017)
         self.mongo_base = client.vacancy
         # self.mongo_base = client.vacancy_hh_scrapy
 
-    def process_item(self, item, spider):           # Метод, куда прилетает сформированный item
-        collection = self.mongo_base['vacancy']   # Выбираем коллекцию по имени паука
-        # collection = self.mongo_base[spider.name]   # Выбираем коллекцию по имени паука
+    def process_item(self, item, spider):           
+        collection = self.mongo_base['vacancy']   
 
-        if spider.name == 'hhru':       # Здесь можно сделать обработку item в зависимости от имени паука
+        if spider.name == 'hhru':       
             salary_list = []
             for _ in item['salary']:
                 s = _.replace(" ", "").replace("\xa0", "")
@@ -90,5 +87,3 @@ class JobparserPipeline:                            # Класс для обра
         collection.insert_one(item)  # Добавляем в базу данных
         return item
 
-    def __del__(self):          # Деструктор. Код в нем выполнится, перед уничтожением объекта
-        pass
