@@ -14,4 +14,4 @@
 
 ### 2) Паук - [sjru](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%206/jobparser/spiders/sjru.py)
 
-### Сохранение в структуру данных = [piplines](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%206/jobparser/pipelines.py) 
+### 3) Сохранение в структуру данных = [piplines](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%206/jobparser/pipelines.py) 
