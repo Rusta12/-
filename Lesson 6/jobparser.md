@@ -12,4 +12,4 @@
 
 ### 1) Паук - [hhru](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%206/jobparser/spiders/hhru.py)
 
-### - 2 Паук [sjru](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%206/jobparser/spiders/sjru.py)
+### 2) Паук - [sjru](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%206/jobparser/spiders/sjru.py)
