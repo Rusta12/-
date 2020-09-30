@@ -1,0 +1,94 @@
+# -*- coding: utf-8 -*-
+
+# Define your item pipelines here
+#
+# Don't forget to add your pipeline to the ITEM_PIPELINES setting
+# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+from pymongo import MongoClient
+
+
+class JobparserPipeline:                            # Класс для обработки item'a
+    def __init__(self):                             # Конструктор, где инициализируем подключение к СУБД
+        client = MongoClient('localhost', 27017)
+        self.mongo_base = client.vacancy
+        # self.mongo_base = client.vacancy_hh_scrapy
+
+    def process_item(self, item, spider):           # Метод, куда прилетает сформированный item
+        collection = self.mongo_base['vacancy']   # Выбираем коллекцию по имени паука
+        # collection = self.mongo_base[spider.name]   # Выбираем коллекцию по имени паука
+
+        if spider.name == 'hhru':       # Здесь можно сделать обработку item в зависимости от имени паука
+            salary_list = []
+            for _ in item['salary']:
+                s = _.replace(" ", "").replace("\xa0", "")
+                salary_list.append(s)
+            item['salary'] = salary_list
+            if item['salary'][0] == 'от':
+                item['salary_min'] = int(item['salary'][1])
+                if item['salary'][2] == 'до':
+                    item['salary_max'] = int(item['salary'][3])
+                    item['currency'] = item['salary'][5]
+                else:
+                    item['salary_max'] = 'NA'
+                    item['currency'] = item['salary'][3]
+            elif item['salary'][0] == 'до':
+                item['salary_min'] = 'NA'
+                item['salary_max'] = int(item['salary'][1])
+                item['currency'] = item['salary'][3]
+            elif item['salary'][0] == 'з/пнеуказана':
+                item['salary_min'] = 'NA'
+                item['salary_max'] = 'NA'
+            else:
+                item['salary_min'] = 'wrong'
+                item['salary_max'] = 'wrong'
+            del item['salary']
+
+            item['location'] = ' '.join(item['location']).replace("  ", " ").replace(" ,", ",")
+            item['company'] = ' '.join(item['company']).replace("\xa0", "").replace("  ", " ").strip()
+            item['site'] = 'https://hh.ru'
+            item['link'] = item['link'][:item['link'].find('?')]
+
+        if spider.name == 'sjru':
+            salary_list = []
+            for _ in item['salary']:
+                s = _.replace(" ", "").replace("\xa0", "")
+                salary_list.append(s)
+            item['salary'] = salary_list
+
+            if item['salary'][0] == 'Подоговорённости':
+                item['salary_min'] = 'NA'
+                item['salary_max'] = 'NA'
+
+            elif item['salary'][2] == '—':
+                item['salary_min'] = int(item['salary'][0])
+                item['salary_max'] = int(item['salary'][4])
+                item['currency'] = item['salary'][6]
+
+            elif item['salary'][0] == 'от':
+                pos = item['salary'][2].find('руб.')
+                item['salary_min'] = item['salary'][2][:pos]
+                item['currency'] = item['salary'][2][pos:]
+
+            elif item['salary'][0] == 'до':
+                pos = item['salary'][2].find('руб.')
+                item['salary_max'] = item['salary'][2][:pos]
+                item['currency'] = item['salary'][2][pos:]
+
+            elif item['salary'][2] == 'руб.':
+                item['salary_min'] = item['salary'][0]
+                item['salary_max'] = item['salary'][0]
+                item['currency'] = item['salary'][2]
+            else:
+                item['salary_min'] = 'wrong'
+                item['salary_max'] = 'wrong'
+            del item['salary']
+
+            item['location'] = ' '.join(item['location']).replace("  ", " ")\
+                .replace(" ,", ",").replace(" Показать на карте", "")
+            item['site'] = 'https://superjob.ru'
+
+        collection.insert_one(item)  # Добавляем в базу данных
+        return item
+
+    def __del__(self):          # Деструктор. Код в нем выполнится, перед уничтожением объекта
+        pass
