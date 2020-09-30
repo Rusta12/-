@@ -20,7 +20,7 @@
   - [X] [Парсинг товаров по акции mvideo](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%205/hw5_mvideo.py)
   
  - Урок 6. Scrapy 
-   - [ ] Идут работы.
+   - [X] [Паук по сбору вакансий](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%206/jobparser.md)
    
  - Урок 7. Scrapy Парсинг фото и файлов
    - [ ] Идут работы.
