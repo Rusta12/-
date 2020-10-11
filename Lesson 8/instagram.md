@@ -3,3 +3,6 @@
 - 3)Собранные данные необходимо сложить в базу данных. Структуру данных нужно заранее продумать, чтобы:
   - Написать запрос к базе, который вернет список подписчиков только указанного пользователя
   - Написать запрос к базе, который вернет список профилей, на кого подписан указанный пользователь
+
+#### 1-2) Паук - [instagramcom](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%208/instagram/spiders/instagramcom.py)
+#### 3) База данных [base](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%208/base_filter.py)
