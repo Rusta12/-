@@ -26,4 +26,4 @@
    - [X] [Паук по сбору фото и файлов](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%207/leroyparser.md)
 
  - Урок 8. Работа с данными
-   - [ ] Идут работы.
+   - [X] [Instagram](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%208/instagram.md)
