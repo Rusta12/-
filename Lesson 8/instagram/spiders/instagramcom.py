@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import scrapy
 import re
 import json
@@ -9,7 +8,7 @@ from copy import deepcopy
 
 
 class InstagramcomSpider(scrapy.Spider):
-    #атрибуты класса
+
     name = 'instagram'
     allowed_domains = ['instagram.com']
     start_urls = ['https://instagram.com/']
@@ -23,11 +22,11 @@ class InstagramcomSpider(scrapy.Spider):
     subscriptions_hash = 'd04b0a864b4b54837c0d870b0e77e076'
 
     def __init__(self, users_list):
-        self.parse_users = users_list      #Пользователь, у которого собираем посты. Можно указать список
+        self.parse_users = users_list      
 
-    def parse(self, response: HtmlResponse):  #Первый запрос на стартовую страницу
-        csrf_token = self.fetch_csrf_token(response.text)   #csrf token забираем из html
-        yield scrapy.FormRequest(                   #заполняем форму для авторизации
+    def parse(self, response: HtmlResponse):  
+        csrf_token = self.fetch_csrf_token(response.text)   
+        yield scrapy.FormRequest(                   
             self.inst_login_link,
             method='POST',
             callback=self.user_parse,
@@ -37,19 +36,19 @@ class InstagramcomSpider(scrapy.Spider):
 
     def user_parse(self, response: HtmlResponse):
         j_body = json.loads(response.text)
-        if j_body['authenticated']:                 #Проверяем ответ после авторизации
+        if j_body['authenticated']:                 
             for user in self.parse_users:
-                yield response.follow(                  #Переходим на желаемую страницу пользователя. Сделать цикл для кол-ва пользователей больше 2-ух
+                yield response.follow(                 
                     f'/{user}',
                     callback=self.user_data_parse,
                     cb_kwargs={'username': user}
                 )
 
     def user_data_parse(self, response: HtmlResponse, username):
-        user_id = self.fetch_user_id(response.text, username)       #Получаем id пользователя
-        variables={'id': user_id,                                    #Формируем словарь для передачи даных в запрос
+        user_id = self.fetch_user_id(response.text, username)       
+        variables={'id': user_id,                                    
                    'username': username,
-                   'first': 12}                                      #12 постов. Можно больше (макс. 50)
+                   'first': 12}                                      
 
         url_subscribers = f'{self.graphql_url}query_hash={self.subscribers_hash}&{urlencode(variables)}'
         yield response.follow(
