@@ -23,7 +23,7 @@
    - [X] [Паук по сбору вакансий](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%206/jobparser.md)
    
  - Урок 7. Scrapy Парсинг фото и файлов
-   - [ ] [Паук по сбору фото и файлов](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%207/leroyparser.md)
+   - [Х] [Паук по сбору фото и файлов](https://github.com/Rusta12/CrawlingParsingScraping-Python/blob/master/Lesson%207/leroyparser.md)
 
  - Урок 8. Работа с данными
    - [ ] Идут работы.
