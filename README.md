@@ -1,4 +1,5 @@
 # Методы сбора и обработки данных из сети Интернет.
+___
 
 - Урок 1. Основы клиент - серверного взаимодействия. Парсинг API
   - [X] [Практическое задание 1.1](https://github.com/Rusta12/Crawling-Parsing-and-Scraping---Python/blob/master/Lesson%201/DZ1-1.py)
